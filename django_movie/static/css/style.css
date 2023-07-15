@@ -394,7 +394,7 @@ li > a:only-child:after {
 }
 
 .main-banner.inner {
-    background: url(../images/banner.jpg)no-repeat center;
+    background: url(../images/banner.jng)no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -403,7 +403,11 @@ li > a:only-child:after {
     position: relative;
     min-height: 20em;
 }
-
+.bg1 {
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 0;
+    background-image: url('../single-post-pic.jpg');
+}
 /*-- place holder --*/
 
 .banner-form ::-webkit-input-placeholder {
