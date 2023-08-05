@@ -21,12 +21,15 @@ class Category(models.Model):
 class Actor(models.Model):
     # Персонажи и режиссеры
     name = models.CharField('Имя', max_length=100)
-    age = models.PositiveIntegerField('Возраст', default=0)
+    age = models.PositiveIntegerField('Возраст', blank=True)
     description = models.TextField('Описание')
     image = models.ImageField('Изображение', upload_to='actors/')
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('actor_detail', kwargs={"slug": self.name})
 
     class Meta:
         verbose_name = 'Персонаж и режиссер'
