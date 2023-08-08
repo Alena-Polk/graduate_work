@@ -1,19 +1,18 @@
 from django import forms
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from .models import Category, Genre, Movie, MovieShots, Actor, Rating, RatingStar, Reviews
 
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
-
 
 class MovieAdminForm(forms.ModelForm):
+    # Форма с виджетом ckeditor
     description = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Movie
         fields = '__all__'
-
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -63,12 +62,15 @@ class MovieAdmin(admin.ModelAdmin):
         (None, {
             "fields": (("year", "world_premiere", "country"),)
         }),
-        ("Актеры и режиссеры", {
+        ("Actors", {
             "classes": ("collapse",),
             "fields": (("actors", "directors", "genres", "category"),)
         }),
-        ("Параметры", {
-            "fields": (("budget", "url", "draft"),)
+        (None, {
+            "fields": (("budget", "fees_in_usa", "fess_in_world"),)
+        }),
+        ("Options", {
+            "fields": (("url", "draft"),)
         }),
     )
 
@@ -76,7 +78,7 @@ class MovieAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src={obj.poster.url} width="100" height="110"')
 
     def unpublish(self, request, queryset):
-        # Снять с публикации
+        """Снять с публикации"""
         row_update = queryset.update(draft=True)
         if row_update == 1:
             message_bit = "1 запись была обновлена"
@@ -85,7 +87,7 @@ class MovieAdmin(admin.ModelAdmin):
         self.message_user(request, f"{message_bit}")
 
     def publish(self, request, queryset):
-        # Опубликовать
+       #Опубликовать
         row_update = queryset.update(draft=False)
         if row_update == 1:
             message_bit = "1 запись была обновлена"
@@ -94,7 +96,7 @@ class MovieAdmin(admin.ModelAdmin):
         self.message_user(request, f"{message_bit}")
 
     publish.short_description = "Опубликовать"
-    publish.allowed_permissions = ('change',)
+    publish.allowed_permissions = ('change', )
 
     unpublish.short_description = "Снять с публикации"
     unpublish.allowed_permissions = ('change',)
@@ -128,6 +130,12 @@ class ActorAdmin(admin.ModelAdmin):
     get_image.short_description = "Изображение"
 
 
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
+    # Рейтинг
+    list_display = ("star", "movie", "ip")
+
+
 @admin.register(MovieShots)
 class MovieShotsAdmin(admin.ModelAdmin):
     # Кадры из anime
@@ -138,12 +146,6 @@ class MovieShotsAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src={obj.image.url} width="50" height="60"')
 
     get_image.short_description = "Изображение"
-
-
-@admin.register(Rating)
-class RatingAdmin(admin.ModelAdmin):
-    # Рейтинг
-    list_display = ("ip",)
 
 
 admin.site.register(RatingStar)
