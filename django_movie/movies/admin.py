@@ -67,7 +67,7 @@ class MovieAdmin(admin.ModelAdmin):
             "fields": (("actors", "directors", "genres", "category"),)
         }),
         (None, {
-            "fields": (("budget", "fees_in_usa", "fess_in_world"),)
+            "fields": (("budget", ),)
         }),
         ("Options", {
             "fields": (("url", "draft"),)
@@ -78,7 +78,7 @@ class MovieAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src={obj.poster.url} width="100" height="110"')
 
     def unpublish(self, request, queryset):
-        """Снять с публикации"""
+        # Снять с публикации
         row_update = queryset.update(draft=True)
         if row_update == 1:
             message_bit = "1 запись была обновлена"
