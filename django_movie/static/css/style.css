@@ -55,6 +55,10 @@ p {
 ul {
     margin: 0;
     padding: 0;
+    list-style-type: none;
+}
+li {
+list-style-type: none;
 }
 
 body img {
@@ -1709,3 +1713,151 @@ a.move-top span {
 }
 
 /*--//responsive--*/
+
+----------------------------------------------------
+nav ul li a {
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+/* Styling for login and signup forms */
+form.login,
+form.signup,
+form.password_reset, 
+form.logout {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+form.login label,
+form.signup label,
+form.password_reset, 
+form.logout {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+form.login input[type="text"],
+form.login input[type="email"],
+form.signup input[type="text"],
+form.signup input[type="email"],
+form.login input[type="password"],
+form.signup input[type="password"],
+form.password_reset input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+form.login button,
+form.signup button,
+form.logout button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 10px;
+}
+
+form.login button:hover,
+form.signup button:hover,
+form.logout button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Styling for logout form */
+form.logout {
+    text-align: center;
+    margin-top: 50px;
+}
+
+form.password_reset button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+}
+
+form.logout button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+form.logout button:hover,
+form.password_reset button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.page h1{
+text-align: center;
+}
+.banner-info p{
+    text-align: center; 
+}
+p.center-align {
+    text-align: center;
+}
+.center-align {
+    text-align: center;
+}
+----------------------------------------------
+/* ... (existing styles) ... */
+
+/* Styling for logout form */
+form.logout {
+    text-align: center;
+    margin-top: 50px;
+}
+
+form.logout button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+form.logout button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.page h1 {
+    text-align: center;
+}
+
+.banner-info p {
+    text-align: center;
+}
+
+p.center-align {
+    text-align: center;
+}
+

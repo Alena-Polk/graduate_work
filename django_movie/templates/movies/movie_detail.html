@@ -56,7 +56,7 @@
                     </li>
                     <li style="list-style: none">
                         <span><b>Бюджет:</b> ${{ movie.budget }}</span></li>
-                    <li>
+                    <li style="list-style: none">
                         <form action="{% url 'add_rating' %}" method="post" name="rating">
                             <b>Рейтинг:</b>
                             {% csrf_token %}
@@ -68,7 +68,6 @@
                                     <label for="rating{{ v }}">{{ k }}</label>
                                 {% endfor %}
                             </span>
-                            <span class="editContent">4.0</span>
                         </form>
                     </li>
                 </ul>
@@ -80,21 +79,21 @@
                                 Share:</h4>
                             <ul class="w3layouts_social_list list-unstyled">
                                 <li>
-                                    <a href="#" class="w3pvt_facebook editContent"
+                                    <a href="https://facebook.com/" class="w3pvt_facebook editContent"
                                        style="outline: none; cursor: inherit;">
                                                 <span class="fa fa-facebook-f"
                                                       style="outline: none; cursor: inherit;"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="w3pvt_twitter editContent"
+                                    <a href="https://twitter.com/" class="w3pvt_twitter editContent"
                                        style="outline: none; cursor: inherit;">
                                                 <span class="fa fa-twitter"
                                                       style="outline: none; cursor: inherit;"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="w3pvt_dribble editContent"
+                                    <a href="https://dribbble.com/" class="w3pvt_dribble editContent"
                                        style="outline: none; cursor: inherit;">
                                                 <span class="fa fa-dribbble"
                                                       style="outline: none; cursor: inherit;"></span>
@@ -201,3 +200,4 @@
         }
     </script>
 {% endblock movie %}
+</div>

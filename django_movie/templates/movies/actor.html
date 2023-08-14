@@ -21,16 +21,16 @@
                 </h3>
                 <h5 class="editContent"></h5>
                 <ul>
-                    <li>
+                    <li style="list-style: none">
                         <span><b>Возраст:</b> {{ actor.age }} лет</span></li>
-                    <li>
+                    <li style="list-style: none">
                         <span><b>Режиссер:</b>
                             {% for movie in actor.film_director.all %}
                                 {{ movie.title }}
                             {% endfor %}
                         </span>
                     </li>
-                    <li><span><b>Актер:</b>
+                    <li style="list-style: none"><span><b>Актер:</b>
                         {% for movie in actor.film_actor.all %}
                             {{ movie.title }}
                         {% endfor %}
@@ -49,4 +49,5 @@
         </div>
     </div>
 {% endblock movie %}
-
+</div>
+</div>
