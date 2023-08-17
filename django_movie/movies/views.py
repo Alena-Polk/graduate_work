@@ -1,11 +1,35 @@
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.base import View
-
+from django.urls import reverse_lazy
 from .models import Movie, Category, Actor, Genre, Rating
-from .forms import ReviewForm, RatingForm
+from .forms import *
+
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
+
+class ConnectionForm(FormView):
+    form_class = ConnectionForm
+    template_name = 'contact/connection.html'
+    success_url = reverse_lazy('about')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Обратная связь"
+        context['cat_selected'] = 2
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            # Обработка формы, например, отправка электронной почты
+            # и другие действия по вашему выбору
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 
 class GenreYear:
@@ -37,6 +61,7 @@ class MovieDetailView(GenreYear, DetailView):
 
 class AddReview(View):
     # Отзывы
+    @method_decorator(login_required)  # Добавляем декоратор для проверки аутентификации
     def post(self, request, pk):
         form = ReviewForm(request.POST)
         movie = Movie.objects.get(id=pk)
@@ -113,7 +138,7 @@ class AddStarRating(View):
 
 
 class Search(ListView):
-    # Поиск фниме
+    # Поиск аниме
     paginate_by = 3
 
     def get_queryset(self):

@@ -143,8 +143,8 @@ nav ul li {
 /* Styling the links */
 
 .menu li a {
-    font-weight: 700;
-    font-size: 0.8em;
+    font-weight: 900;
+    font-size: 1em;
     letter-spacing: 2px;
     padding-left: 0;
     padding-right: 0;
@@ -177,7 +177,7 @@ nav .menu li a:hover {
 }
 
 .menu li.active a {
-    color: #ff4c4c !important;
+    color: #fff !important;
 }
 
 /* Hide Dropdowns by Default
@@ -393,7 +393,7 @@ li > a:only-child:after {
     -ms-background-size: cover;
     background-size: cover;
     position: relative;
-    min-height: 50em;
+    min-height: 25em;
 }
 
 .main-banner.inner {
@@ -1727,7 +1727,8 @@ nav ul li a {
 form.login,
 form.signup,
 form.password_reset, 
-form.logout {
+form.logout,
+form.connection {
     width: 50%;
     margin: 50px auto;
     padding: 20px;
@@ -1740,7 +1741,8 @@ form.logout {
 form.login label,
 form.signup label,
 form.password_reset, 
-form.logout {
+form.logout,
+form.connection {
     display: block;
     margin-bottom: 10px;
     font-weight: 600;
@@ -1752,7 +1754,10 @@ form.signup input[type="text"],
 form.signup input[type="email"],
 form.login input[type="password"],
 form.signup input[type="password"],
-form.password_reset input[type="email"] {
+form.password_reset input[type="email"],
+form.connection input[type='text'],
+form.connection input[type="email"]
+ {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -1762,7 +1767,8 @@ form.password_reset input[type="email"] {
 
 form.login button,
 form.signup button,
-form.logout button {
+form.logout button,
+form.connection button {
     background-color: #000;
     color: #fff;
     padding: 10px 20px;
@@ -1775,7 +1781,8 @@ form.logout button {
 
 form.login button:hover,
 form.signup button:hover,
-form.logout button:hover {
+form.logout button:hover,
+form.connection button:hover {
     background-color: #fff;
     color: #000;
 }
@@ -1844,7 +1851,9 @@ form.logout button {
     transition: background-color 0.3s, color 0.3s;
 }
 
-form.logout button:hover {
+form.logout button:hover,
+.underline-button:hover
+{
     background-color: #fff;
     color: #000;
 }
@@ -1860,4 +1869,53 @@ form.logout button:hover {
 p.center-align {
     text-align: center;
 }
+-------------------------------
+.hover-effect-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+  }
 
+  .hover-effect-button:hover {
+    background-color: white;
+    color: black;
+  }
+-------------------------------
+/* ... (existing styles) ... */
+
+/* Styling for connection form */
+.connection-form {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.connection-form button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.connection-form button:hover {
+    background-color: #fff;
+    color: #000;
+}
+.page h1 {
+    text-align: center;
+}
+
+.banner-info p {
+    text-align: center;
+}
+
+p.center-align {
+    text-align: center;
+}

@@ -14,6 +14,7 @@ class MovieAdminForm(forms.ModelForm):
         model = Movie
         fields = '__all__'
 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     # Категории
@@ -67,7 +68,7 @@ class MovieAdmin(admin.ModelAdmin):
             "fields": (("actors", "directors", "genres", "category"),)
         }),
         (None, {
-            "fields": (("budget", ),)
+            "fields": (("budget",),)
         }),
         ("Options", {
             "fields": (("url", "draft"),)
@@ -87,7 +88,7 @@ class MovieAdmin(admin.ModelAdmin):
         self.message_user(request, f"{message_bit}")
 
     def publish(self, request, queryset):
-       #Опубликовать
+        # Опубликовать
         row_update = queryset.update(draft=False)
         if row_update == 1:
             message_bit = "1 запись была обновлена"
@@ -96,7 +97,7 @@ class MovieAdmin(admin.ModelAdmin):
         self.message_user(request, f"{message_bit}")
 
     publish.short_description = "Опубликовать"
-    publish.allowed_permissions = ('change', )
+    publish.allowed_permissions = ('change',)
 
     unpublish.short_description = "Снять с публикации"
     unpublish.allowed_permissions = ('change',)

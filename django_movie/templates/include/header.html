@@ -13,36 +13,35 @@
             <input type="checkbox" id="drop">
             <ul class="menu mt-2">
                 <li class="active"><a href="index.html">Главная</a></li>
+                <li class="active"><a href="/">Аниме</a></li>
+                <li class="active"><a href="{% url 'connection' %}">Напиши нам</a></li>
                 <li>
                     <!-- First Tier Drop Down -->
-                    <label for="drop-2" class="toggle">Категории <span
-                            class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                    <a href="#">Категории <span class="fa fa-angle-down"
-                                                aria-hidden="true"></span></a>
                     <input type="checkbox" id="drop-2">
                     <ul>
                         {% get_categories as categories %}
                         {% for category in categories %}
-                            <li><a href="/">{{ category.name }}</a></li>
+                        <li><a href="/">{{ category.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
-                                <li>
+                <li>
                     {% if user.is_authenticated %}
-                        <span style="color: #ff4c4c"><big>{{ user.username }}</big></span>
-                        <a href="{% url 'account_logout' %}"
-                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
-                            Выход
-                        </a>
+                    <span style="color: #fff; font-size: medium; vertical-align: top;">{{ user.username }}</span>
+
+                    <a href="{% url 'account_logout' %}"
+                       style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                        Выход
+                    </a>
                     {% else %}
-                        <a href="{% url 'account_login' %}"
-                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
-                            Вход
-                        </a>
-                         <a href="{% url 'account_signup' %}"
-                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
-                            Регистрация
-                        </a>
+                    <a href="{% url 'account_login' %}"
+                       style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                        Вход
+                    </a>
+                    <a href="{% url 'account_signup' %}"
+                       style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                        Регистрация
+                    </a>
                     {% endif %}
                 </li>
             </ul>
