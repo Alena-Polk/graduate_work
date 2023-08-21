@@ -14,7 +14,7 @@
         <h3 class="sear-head editContent">Жанры</h3>
         <ul class="w3layouts-box-list">
             {% for genre in view.get_genres %}
-                <li class="editContent">
+                <li class="editContent" style="font-size:22px">
                     <input type="checkbox" class="checked" name="genre" value="{{ genre.id }}">
                     <span class="span editContent">{{ genre.name }}</span>
                 </li>
@@ -28,68 +28,65 @@
         <h3 class="sear-head editContent">Год</h3>
         <ul class="w3layouts-box-list">
             {% for movie in view.get_years %}
-                <li class="editContent">
+                <li class="editContent" style="font-size:22px">
                     <input type="checkbox" class="checked" name="year" value="{{ movie.year }}">
                     <span class="span editContent">{{ movie.year }}</span>
                 </li>
             {% endfor %}
         </ul>
     </div>
-    <button type="submit" class="hover-effect-button">Найти</button>
+    <button type="submit" class="hover-effect-button" style="font-size:20px">Найти</button>
 </form>
 <!-- //discounts -->
 <!-- reviews -->
 <div class="customer-rev left-side my-4">
-    <h3 class="sear-head editContent">Рейтинг</h3>
+    <h3 class="sear-head editContent" style="font-size:20px">Рейтинг</h3>
     <ul class="w3layouts-box-list">
         <li>
-            <a href="#">
+            <a href="{% url 'filter_movies_by_rating' 5 %}" class="{% if selected_rating == 5 %}active{% endif %}">
+                <span class="fa fa-star"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
-                <span class="fa fa-star" aria-hidden="true"></span>
-                <span class="editContent">5.0</span>
+                <span class="editContent">5</span>
             </a>
         </li>
         <li>
-            <a href="#">
-                <span class="fa fa-star" aria-hidden="true"></span>
+            <a href="{% url 'filter_movies_by_rating' 4 %}" class="{% if selected_rating == 4 %}active{% endif %}"><span class="fa fa-star"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
-                <span class="editContent">4.0</span>
+                <span class="editContent">4</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{% url 'filter_movies_by_rating' 3 %}" class="{% if selected_rating == 3 %}active{% endif %}"><span class="fa fa-star"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
-                <span class="fa fa-star" aria-hidden="true"></span>
-                <span class="fa fa-star-half-o" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
-                <span class="editContent">3.5</span>
+                <span class="fa fa-star-o" aria-hidden="true"></span>
+                <span class="editContent">3</span>
             </a>
         </li>
         <li>
-            <a href="#">
-                <span class="fa fa-star" aria-hidden="true"></span>
-                <span class="fa fa-star" aria-hidden="true"></span>
-                <span class="fa fa-star" aria-hidden="true"></span>
+            <a href="{% url 'filter_movies_by_rating' 2 %}" class="{% if selected_rating == 2 %}active{% endif %}"><span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
-                <span class="editContent">3.0</span>
+                <span class="fa fa-star-o" aria-hidden="true"></span>
+                <span class="editContent">2</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{% url 'filter_movies_by_rating' 1 %}" class="{% if selected_rating == 1 %}active{% endif %}">
                 <span class="fa fa-star" aria-hidden="true"></span>
-                <span class="fa fa-star" aria-hidden="true"></span>
-                <span class="fa fa-star-half-o" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
-                <span class="editContent">2.5</span>
+                <span class="fa fa-star-o" aria-hidden="true"></span>
+                <span class="fa fa-star-o" aria-hidden="true"></span>
+                <span class="editContent">1</span>
             </a>
         </li>
     </ul>

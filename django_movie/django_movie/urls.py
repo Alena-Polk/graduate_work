@@ -27,6 +27,7 @@ urlpatterns = [
     path('contact/', include("contact.urls")),
     path("", include("movies.urls")),
     path('about/', views.flatpage, {'url': '/about/'}, name='about'),
+    path('index/', views.flatpage, {'url': '/index/'}, name='index'),
 ]
 
 if settings.DEBUG:

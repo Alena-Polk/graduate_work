@@ -1,19 +1,15 @@
-html,
 body {
     margin: 0;
-    font-size: 100%;
+    font-size: 14.5px;
     background: #fff;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lobster', cursive;
     scroll-behavior: smooth;
 }
+
 
 body a {
     text-decoration: none;
     transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
 }
 
 a:hover {
@@ -26,13 +22,10 @@ input[type="text"],
 input[type="email"],
 input[type="search"] {
     transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+/* Стиль заголовков */
 h1,
 h2,
 h3,
@@ -42,31 +35,33 @@ h6 {
     margin: 0;
     letter-spacing: 1px;
     font-weight: 600;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Lobster', cursive;
 }
 
+/* Стиль параграфов */
 p {
     font-size: 0.9em;
-    color: #8c9398;
-    line-height: 2em;
+    color: #000;
+    line-height: 1.5;
     letter-spacing: 1px;
 }
 
+/* Стиль списков */
 ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
+
+/* Исправление стиля li */
 li {
-list-style-type: none;
+    list-style-type: none;
 }
 
 body img {
     border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -o-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
+    max-width: 100%; /* Изображение не будет шире контейнера */
+    height: auto; /* Сохранит пропорции изображения */
 }
 
 .breadcrumb,
@@ -81,10 +76,10 @@ ol {
 /* CSS Document */
 
 header {
-    position: absolute;
+    position: fixed; /* Заменено на fixed */
     z-index: 9;
     width: 100%;
-    background-color: #00000045;
+    background-color: rgba(0, 0, 0, 0.45); /* Изменен цвет с учетом альфа-канала */
 }
 
 .toggle,
@@ -97,18 +92,18 @@ header {
 nav {
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Добавлено */
 }
-
 
 #logo a {
     float: left;
-    display: initial;
+    display: inline; /* Изменено на inline */
     margin: 0;
     letter-spacing: 1px;
     color: #fff;
     font-size: 1em;
     font-weight: 700;
-    text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.06); /* Изменено */
     font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -144,7 +139,7 @@ nav ul li {
 
 .menu li a {
     font-weight: 900;
-    font-size: 1em;
+    font-size: 1.2em;
     letter-spacing: 2px;
     padding-left: 0;
     padding-right: 0;
@@ -616,7 +611,7 @@ ul.tic-info li {
 /*-- /New-Arrivals --*/
 .product-shoe-info {
     padding: 0 0 15px 0;
-    border: 1px solid #e4e4e4;
+    border: 1px solid #6f6a6a;
 }
 
 .item-info-product h4 a {
@@ -637,7 +632,7 @@ span.money {
 .product_price {
     margin: 1em 0 0 0;
     padding: 1em 0 0 0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #7b6e6e;
 }
 
 ul.stars li {
@@ -881,14 +876,14 @@ li.breadcrumb-item a {
     border: 1px solid #ddd;
 }
 
-ul.w3layouts-box-list li {
+/* ul.w3layouts-box-list li {
     list-style: none;
     display: block;
     margin-bottom: 0.9em;
     color: #8c9398;
     letter-spacing: 1px;
     font-size: 0.9em;
-}
+} */
 
 .grid-img-right {
     background: url(../images/single.jpg) no-repeat center;
@@ -924,7 +919,7 @@ ul.w3layouts-box-list li {
 .desc1-right h3 {
     text-shadow: 0 1px 0 #ffffff;
     color: #1e272e;
-    font-size: 1.1em;
+    font-size: 1 em;
     margin-bottom: 15px;
 }
 
@@ -1267,7 +1262,7 @@ h2.logo-2 a {
 }
 
 .w3layouts_social_list li a span {
-    color: #fff;
+    color: #18361a;
     line-height: 34px;
 }
 
@@ -1919,3 +1914,135 @@ p.center-align {
 p.center-align {
     text-align: center;
 }
+--------------
+/* Styling for connection form */
+.connection button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.connection button:hover {
+    background-color: #fff;
+    color: #000;
+}
+--------------------------------------
+/* Sidebar Styles */
+.search-bar {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar h3.sear-head {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="search"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 70%;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.search-bar input[type="search"]:focus {
+    border-color: #ff5e14;
+}
+
+.search-bar button.btn1 {
+    background: #ff5e14;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.search-bar button.btn1:hover {
+    background-color: #d14210;
+}
+
+.left-side {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-side h3.sear-head {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.w3layouts-box-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.w3layouts-box-list li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.hover-effect-button {
+    background: #ff5e14;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.hover-effect-button:hover {
+    background-color: #d14210;
+}
+
+.customer-rev {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.customer-rev h3.sear-head {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.customer-rev .w3layouts-box-list li {
+    margin-bottom: 10px;
+}
+
+.customer-rev .fa-star {
+    color: #f39c12;
+    margin-right: 5px;
+}
+
+.customer-rev .fa-star-o {
+    color: #ccc;
+    margin-right: 5px;
+}
+
+.editContent {
+    /* Your custom edit content styles here */
+}
+---------------------------------------

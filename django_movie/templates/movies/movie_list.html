@@ -18,36 +18,38 @@
                     </h4>
 
                     <div class="product_price">
-                                            <div class="grid-price">
-                                                <span class="money editContent">{{ movie.tagline }}</span>
-                                            </div>
-                                        </div>
-                                        <ul class="stars">
-                                            <li><a href="#"><span class="fa fa-star"
-                                                                  aria-hidden="true"></span></a>
-                                            </li>
-                                            <li><a href="#"><span class="fa fa-star"
-                                                                  aria-hidden="true"></span></a>
-                                            </li>
-                                            <li><a href="#"><span class="fa fa-star-half-o"
-                                                                  aria-hidden="true"></span></a>
-                                            </li>
-                                            <li><a href="#"><span class="fa fa-star-half-o"
-                                                                  aria-hidden="true"></span></a>
-                                            </li>
-                                            <li><a href="#"><span class="fa fa-star-o"
-                                                                  aria-hidden="true"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
+                        <div class="grid-price">
+                            <span class="money editContent">{{ movie.tagline }}</span>
+                        </div>
                     </div>
-        <div class="grid-img-right mt-4 text-right bg bg1" >
-            {% include 'include/pagination.html' %}
+                    <ul class="stars">
+                        <li><a href="{% url 'filter_movies_by_rating' 1 %}"
+                               class="{% if selected_rating == 1 %}active{% endif %}" style="color: red">1<span
+                                class="fa fa-star"></span></a>
+                        </li>
+                        <li><a href="{% url 'filter_movies_by_rating' 2 %}"
+                               class="{% if selected_rating == 2 %}active{% endif %}" style="color: red">2<span
+                                class="fa fa-star"></span></a>
+                        </li>
+                        <li><a href="{% url 'filter_movies_by_rating' 3 %}"
+                               class="{% if selected_rating == 3 %}active{% endif %}" style="color: red">3<span
+                                class="fa fa-star-half-o"></span></a></li>
+                        <li><a href="{% url 'filter_movies_by_rating' 4 %}"
+                               class="{% if selected_rating == 4 %}active{% endif %}" style="color: red">4<span
+                                class="fa fa-star-half-o"></span></a></li>
+                        <li><a href="{% url 'filter_movies_by_rating' 5 %}"
+                               class="{% if selected_rating == 5 %}active{% endif %}" style="color: red">5<span
+                                class="fa fa-star-o"></span></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
+    <div class="grid-img-right mt-4 text-right bg bg1">
+        {% include 'include/pagination.html' %}
+    </div>
+</div>
 {% endblock movie %}
 
 

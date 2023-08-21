@@ -1,5 +1,5 @@
 from django.urls import path
-
+from .views import FilterMoviesByRating
 from . import views
 
 urlpatterns = [
@@ -11,5 +11,9 @@ urlpatterns = [
     path("<slug:slug>/", views.MovieDetailView.as_view(), name="movie_detail"),
     path("review/<int:pk>/", views.AddReview.as_view(), name="add_review"),
     path("actor/<str:slug>/", views.ActorView.as_view(), name="actor_detail"),
-    path("connection", views.ConnectionForm.as_view(), name="connection"),
+    path("connection", views.ConnectionFormView.as_view(), name="connection"),
+    path('about/', views.about_page, name='about_page'),
+    path('index/', views.index_page, name='index_page'),
+    path('filter/<int:rating>/', FilterMoviesByRating.as_view(), name='filter_movies_by_rating'),
+
 ]

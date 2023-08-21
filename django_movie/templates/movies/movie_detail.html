@@ -74,32 +74,15 @@
 
                     <div class="share-desc">
                         <div class="share">
-                            <h4 class="editContent"
-                                style="outline: none; cursor: inherit;">
-                                Share:</h4>
-                            <ul class="w3layouts_social_list list-unstyled">
-                                <li>
-                                    <a href="https://facebook.com/" class="w3pvt_facebook editContent"
-                                       style="outline: none; cursor: inherit;">
-                                                <span class="fa fa-facebook-f"
-                                                      style="outline: none; cursor: inherit;"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/" class="w3pvt_twitter editContent"
-                                       style="outline: none; cursor: inherit;">
-                                                <span class="fa fa-twitter"
-                                                      style="outline: none; cursor: inherit;"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://dribbble.com/" class="w3pvt_dribble editContent"
-                                       style="outline: none; cursor: inherit;">
-                                                <span class="fa fa-dribbble"
-                                                      style="outline: none; cursor: inherit;"></span>
-                                    </a>
-                                </li>
-                            </ul>
+        <h4 class="editContent" style="outline: none; cursor: inherit;">Напишите нам:</h4>
+        <ul class="w3layouts_social_list list-unstyled">
+            <li class="share-circle">
+                <a href="https://telegram.me/share/url?url=Your%20URL&text=Your%20Share%20Text"
+                   class="w3pvt_telegram editContent" style="outline: none; cursor: inherit;">
+                    <span class="fa fa-paper-plane" style="outline: none; cursor: inherit;"></span>
+                </a>
+            </li>
+        </ul>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -203,6 +186,7 @@
             document.getElementById("contactparent").value = id;
             document.getElementById("contactcomment").innerText = `${name}, `
         }
+
 
     </script>
     {% endblock movie %}

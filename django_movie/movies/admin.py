@@ -4,6 +4,17 @@ from django.utils.safestring import mark_safe
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from .models import Category, Genre, Movie, MovieShots, Actor, Rating, RatingStar, Reviews
+from django.contrib.flatpages.admin import FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
+from django.db import models
+from ckeditor.widgets import CKEditorWidget
+
+
+# Define a new FlatPageAdmin
+class FlatPageAdmin(FlatPageAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorWidget}
+    }
 
 
 class MovieAdminForm(forms.ModelForm):
@@ -153,3 +164,7 @@ admin.site.register(RatingStar)
 
 admin.site.site_title = "Anime Movies"
 admin.site.site_header = "Anime Movies"
+
+# Re-register FlatPageAdmin
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, FlatPageAdmin)

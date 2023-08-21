@@ -10,26 +10,55 @@ from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+from django.contrib.flatpages.models import FlatPage
 
-class ConnectionForm(FormView):
-    form_class = ConnectionForm
+
+class FilterMoviesByRating(View):
+    # фильтр рейтинга
+    template_name = 'movies/movie_list.html'
+
+    def get(self, request, rating):
+        filtered_movies = Movie.objects.filter(rating__star__value=rating)
+        context = {'movie_list': filtered_movies, 'selected_rating': rating}
+        return render(request, self.template_name, context)
+
+
+def about_page(request):
+    flatpage = FlatPage.objects.get(url='/about/')
+    return render(request, 'pages/about.html', {'flatpage': flatpage})
+
+
+def index_page(request):
+    flatpage = FlatPage.objects.get(url='/index/')
+    return render(request, 'pages/index.html', {'flatpage': flatpage})
+
+
+class ConnectionFormView(View):
     template_name = 'contact/connection.html'
     success_url = reverse_lazy('about')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = "Обратная связь"
-        context['cat_selected'] = 2
-        return context
+    def get(self, request, *args, **kwargs):
+        form = ConnectionForm()
+        context = {
+            'title': "Обратная связь",
+            'cat_selected': 2,
+            'form': form,
+        }
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
-        form = self.get_form()
+        form = ConnectionForm(request.POST)
         if form.is_valid():
-            # Обработка формы, например, отправка электронной почты
-            # и другие действия по вашему выбору
-            return self.form_valid(form)
+            success_message = "Спасибо за обращение, мы рассмотрим его и обязательно Вас проинформируем."
+            context = {
+                'title': "Обратная связь",
+                'cat_selected': 2,
+                'form': form,
+                'success_message': success_message,
+            }
+            return render(request, self.template_name, context)
         else:
-            return self.form_invalid(form)
+            return render(request, self.template_name, {'form': form})
 
 
 class GenreYear:
@@ -38,7 +67,7 @@ class GenreYear:
         return Genre.objects.all()
 
     def get_years(self):
-        return Movie.objects.filter(draft=False).values("year").distinct()
+        return Movie.objects.filter(draft=False).values("year").distinct().order_by("-year")
 
 
 class MoviesView(GenreYear, ListView):
