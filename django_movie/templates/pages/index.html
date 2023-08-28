@@ -3,7 +3,7 @@
 {% load movie_tag %}
 <html lang="ru">
 <head>
-    <title>{% block title %}Аниме Просмотр{% endblock title %}</title>
+    <title>{% block title %}Главная страница{% endblock title %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
@@ -117,6 +117,12 @@
          style="background-color: rgba(0, 0, 0, 0); margin-top: 0px; background-image: url(../static/6.jpg);">
         {% include 'include/header.html' %}
     </div>
+    <ol class="breadcrumb editContent">
+        <li class="breadcrumb-item">
+            <a href="{% url 'index' %}" class="editContent">Главная</a>
+        </li>
+        <li class="breadcrumb-item active editContent"><a href="{% url 'about' %}">О нас</a></li>
+    </ol>
     <div class="one">
         <h2>Популярные аниме</h2>
 
