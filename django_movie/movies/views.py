@@ -74,7 +74,7 @@ class MoviesView(GenreYear, ListView):
     # Список аниме
     model = Movie
     queryset = Movie.objects.filter(draft=False)
-    paginate_by = 9
+    paginate_by = 12
 
 
 class MovieDetailView(GenreYear, DetailView):
@@ -112,7 +112,7 @@ class ActorView(GenreYear, DetailView):
 
 class FilterMoviesView(GenreYear, ListView):
     # Фильтр аниме
-    paginate_by = 3
+    paginate_by = 6
 
     def get_queryset(self):
         queryset = Movie.objects.filter(
