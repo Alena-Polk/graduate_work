@@ -893,7 +893,7 @@ li.breadcrumb-item a {
     -ms-background-size: cover;
     background-size: cover;
     position: relative;
-    height: 15em;
+    height: 16.8em;
     padding: 5.5em 2em 0 0;
 }
 
@@ -982,7 +982,7 @@ p.italic-blue {
 
 .customer-rev ul li span {
     color: #f58b8d;
-    font-size: 0.8em
+    font-size: 1.3em
 }
 
 h3.sear-head {

@@ -1,4 +1,28 @@
 {% load movie_tag %}
+<style>
+    .w3layouts-box-list {
+        max-height: 390px;
+        overflow-y: hidden;
+        transition: max-height 0.3s ease;
+    }
+    .expand {
+        max-height: none;
+    }
+</style>
+
+<script>
+    function toggleSection(sectionId, buttonId) {
+        var section = document.getElementById(sectionId);
+        var button = document.getElementById(buttonId);
+        section.classList.toggle('expand');
+        if (section.classList.contains('expand')) {
+            button.textContent = 'Свернуть';
+        } else {
+            button.textContent = 'Посмотреть все';
+        }
+    }
+</script>
+
 <div class="search-bar w3layouts-newsletter">
     <h3 class="sear-head editContent">Поиск </h3>
     <form action="{% url 'search' %}" method="get" class="d-flex editContent">
@@ -11,8 +35,8 @@
 <!--preference -->
 <form action="{% url 'filter' %}" method="get" name="filter">
     <div class="left-side my-4">
-        <h3 class="sear-head editContent">Жанры</h3>
-        <ul class="w3layouts-box-list">
+        <h3 class="sear-head editContent" onclick="toggleSection('genres-section')">Жанры</h3>
+        <ul class="w3layouts-box-list" id="genres-section">
             {% for genre in view.get_genres %}
                 <li class="editContent" style="font-size:22px">
                     <input type="checkbox" class="checked" name="genre" value="{{ genre.id }}">
@@ -20,13 +44,14 @@
                 </li>
             {% endfor %}
         </ul>
-    </div>
+    <button type="button" id="genres-button" onclick="toggleSection('genres-section', 'genres-button')" class="btn">Посмотреть все</button>
+</div>
     <!-- // preference -->
     <!-- discounts -->
 
     <div class="left-side">
-        <h3 class="sear-head editContent">Год</h3>
-        <ul class="w3layouts-box-list">
+        <h3 class="sear-head editContent" onclick="toggleSection('years-section')">Год</h3>
+        <ul class="w3layouts-box-list" id="years-section">
             {% for movie in view.get_years %}
                 <li class="editContent" style="font-size:22px">
                     <input type="checkbox" class="checked" name="year" value="{{ movie.year }}">
@@ -34,7 +59,8 @@
                 </li>
             {% endfor %}
         </ul>
-    </div>
+    <button type="button" id="years-button" onclick="toggleSection('years-section', 'years-button')" class="btn">Посмотреть все</button>
+</div>
     <button type="submit" class="hover-effect-button" style="font-size:20px">Найти</button>
 </form>
 <!-- //discounts -->
