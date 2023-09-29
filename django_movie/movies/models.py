@@ -148,3 +148,17 @@ class Reviews(models.Model):
     class Meta:
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
+
+
+class Feedback(models.Model):
+    # обратная связь
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    content = models.TextField()
+
+    def __str__(self):
+        return f'{self.name} - {self.email}'
+
+    class Meta:
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'

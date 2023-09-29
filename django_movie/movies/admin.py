@@ -8,9 +8,10 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.db import models
 from ckeditor.widgets import CKEditorWidget
+from .models import Feedback
 
 
-# Define a new FlatPageAdmin
+# FlatPageAdmin
 class FlatPageAdmin(FlatPageAdmin):
     formfield_overrides = {
         models.TextField: {'widget': CKEditorWidget}
@@ -168,3 +169,4 @@ admin.site.site_header = "Anime Movies"
 # Re-register FlatPageAdmin
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)
+admin.site.register(Feedback)

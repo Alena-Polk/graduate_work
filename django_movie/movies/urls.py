@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import FilterMoviesByRating
+# from .views import FilterMoviesByRating
 from . import views
 
 urlpatterns = [
@@ -14,6 +14,7 @@ urlpatterns = [
     path("connection", views.ConnectionFormView.as_view(), name="connection"),
     path('about/', views.about_page, name='about_page'),
     path('index/', views.index_page, name='index_page'),
-    path('filter/<int:rating>/', FilterMoviesByRating.as_view(), name='filter_movies_by_rating'),
+    path("filter/<int:star>/", views.FilterMoviesView.as_view(), name='filter_by_star'),
+    # path('filter/<int:rating>/', FilterMoviesByRating.as_view(), name='filter_movies_by_rating'),
 
 ]

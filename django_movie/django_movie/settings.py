@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'movies',
     'contact',
-
+    'django.contrib.humanize',
     'allauth',
     'allauth.account',
 ]

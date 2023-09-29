@@ -11,16 +11,18 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 from django.contrib.flatpages.models import FlatPage
+from .forms import ConnectionForm
+from .models import Feedback
 
-
-class FilterMoviesByRating(View):
-    # фильтр рейтинга
-    template_name = 'movies/movie_list.html'
-
-    def get(self, request, rating):
-        filtered_movies = Movie.objects.filter(rating__star__value=rating)
-        context = {'movie_list': filtered_movies, 'selected_rating': rating}
-        return render(request, self.template_name, context)
+# class FilterMoviesByRating(View):
+#     # фильтр рейтинга
+#     template_name = 'movies/movie_list.html'
+#     paginate_by = 12
+#
+#     def get(self, request, rating):
+#         filtered_movies = Movie.objects.filter(rating__star__value=rating)
+#         context = {'movie_list': filtered_movies, 'selected_rating': rating}
+#         return render(request, self.template_name, context)
 
 
 def about_page(request):
@@ -49,6 +51,14 @@ class ConnectionFormView(View):
     def post(self, request, *args, **kwargs):
         form = ConnectionForm(request.POST)
         if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            content = form.cleaned_data['content']
+
+            # Save the feedback to the database
+            feedback = Feedback(name=name, email=email, content=content)
+            feedback.save()
+
             success_message = "Спасибо за обращение, мы рассмотрим его и обязательно Вас проинформируем."
             context = {
                 'title': "Обратная связь",
@@ -112,13 +122,26 @@ class ActorView(GenreYear, DetailView):
 
 class FilterMoviesView(GenreYear, ListView):
     # Фильтр аниме
-    paginate_by = 6
+    model = Movie
+    paginate_by = 9
+    template_name = 'movies/movie_list.html'
 
     def get_queryset(self):
-        queryset = Movie.objects.filter(
-            Q(year__in=self.request.GET.getlist("year")) |
-            Q(genres__in=self.request.GET.getlist("genre"))
-        ).distinct()
+        queryset = super().get_queryset()
+
+        selected_stars = self.kwargs.get('star')
+        if selected_stars is not None:
+            queryset = queryset.filter(rating__star__value=selected_stars)
+
+        years = self.request.GET.getlist("year")
+        genres = self.request.GET.getlist("genre")
+
+        if years:
+            queryset = queryset.filter(year__in=years)
+
+        if genres:
+            queryset = queryset.filter(genres__in=genres)
+
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -177,3 +200,4 @@ class Search(ListView):
         context = super().get_context_data(*args, **kwargs)
         context["q"] = f'q={self.request.GET.get("q")}&'
         return context
+

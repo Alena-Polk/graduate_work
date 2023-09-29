@@ -13,7 +13,8 @@ class ReviewForm(forms.ModelForm):
 class RatingForm(forms.ModelForm):
     # Форма добавления рейтинга
     star = forms.ModelChoiceField(
-        queryset=RatingStar.objects.all(), widget=forms.RadioSelect(), empty_label=None)
+        queryset=RatingStar.objects.all(), widget=forms.RadioSelect(), empty_label=None
+    )
 
     class Meta:
         model = Rating
@@ -24,4 +25,5 @@ class ConnectionForm(forms.Form):
     # Форма обратной связи
     name = forms.CharField(max_length=255, label='Имя')
     email = forms.EmailField(label='Email')
-    content = forms.CharField(label='Сообщение', widget=forms.Textarea(attrs={'cols': 103, 'rows': 10}))
+    content = forms.CharField(label='Сообщение',
+                              widget=forms.Textarea(attrs={'style': 'width:100%', 'rows': 10}))

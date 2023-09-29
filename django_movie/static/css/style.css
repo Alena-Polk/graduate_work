@@ -139,7 +139,7 @@ nav ul li {
 
 .menu li a {
     font-weight: 900;
-    font-size: 1.2em;
+    font-size: 1em;
     letter-spacing: 2px;
     padding-left: 0;
     padding-right: 0;
@@ -450,7 +450,7 @@ li > a:only-child:after {
     font-weight: 400;
     text-transform: uppercase;
     margin: 0;
-    text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
+    text-shadow: 2px 5px 3px rgb(0, 0, 0);
 }
 
 .ban-buttons a {
@@ -616,7 +616,7 @@ ul.tic-info li {
 
 .item-info-product h4 a {
     color: #080808;
-    font-size: 15px;
+    font-size: 11px;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 700;
@@ -893,7 +893,7 @@ li.breadcrumb-item a {
     -ms-background-size: cover;
     background-size: cover;
     position: relative;
-    height: 16.8em;
+    height: 17.7em;
     padding: 5.5em 2em 0 0;
 }
 
@@ -982,7 +982,7 @@ p.italic-blue {
 
 .customer-rev ul li span {
     color: #f58b8d;
-    font-size: 1.3em
+    font-size: 1em
 }
 
 h3.sear-head {
@@ -1955,7 +1955,7 @@ p.center-align {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    width: 70%;
+    width: 100%;
     transition: border-color 0.3s ease-in-out;
 }
 

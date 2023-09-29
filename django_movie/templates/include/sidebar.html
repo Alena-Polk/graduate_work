@@ -1,7 +1,7 @@
 {% load movie_tag %}
 <style>
     .w3layouts-box-list {
-        max-height: 390px;
+        max-height: 400px;
         overflow-y: hidden;
         transition: max-height 0.3s ease;
     }
@@ -32,44 +32,47 @@
         </button>
     </form>
 </div>
-<!--preference -->
+<!-- preference -->
 <form action="{% url 'filter' %}" method="get" name="filter">
     <div class="left-side my-4">
         <h3 class="sear-head editContent" onclick="toggleSection('genres-section')">Жанры</h3>
         <ul class="w3layouts-box-list" id="genres-section">
             {% for genre in view.get_genres %}
-                <li class="editContent" style="font-size:22px">
+                <li class="editContent" style="font-size:20px">
                     <input type="checkbox" class="checked" name="genre" value="{{ genre.id }}">
                     <span class="span editContent">{{ genre.name }}</span>
                 </li>
             {% endfor %}
         </ul>
-    <button type="button" id="genres-button" onclick="toggleSection('genres-section', 'genres-button')" class="btn">Посмотреть все</button>
-</div>
+        {% if request.path != '/search/' %}
+        <button type="button" id="genres-button" onclick="toggleSection('genres-section', 'genres-button')" class="btn">Посмотреть все</button>
+        {% endif %}
+    </div>
     <!-- // preference -->
     <!-- discounts -->
-
     <div class="left-side">
         <h3 class="sear-head editContent" onclick="toggleSection('years-section')">Год</h3>
         <ul class="w3layouts-box-list" id="years-section">
             {% for movie in view.get_years %}
-                <li class="editContent" style="font-size:22px">
+                <li class="editContent" style="font-size:20px">
                     <input type="checkbox" class="checked" name="year" value="{{ movie.year }}">
                     <span class="span editContent">{{ movie.year }}</span>
                 </li>
             {% endfor %}
         </ul>
-    <button type="button" id="years-button" onclick="toggleSection('years-section', 'years-button')" class="btn">Посмотреть все</button>
-</div>
+        {% if request.path != '/search/' %}
+        <button type="button" id="years-button" onclick="toggleSection('years-section', 'years-button')" class="btn">Посмотреть все</button>
+        {% endif %}
+    </div>
     <button type="submit" class="hover-effect-button" style="font-size:20px">Найти</button>
 </form>
 <!-- //discounts -->
 <!-- reviews -->
 <div class="customer-rev left-side my-4">
-    <h3 class="sear-head editContent" style="font-size:20px">Рейтинг</h3>
+    <h3 class="sear-head editContent">Рейтинг</h3>
     <ul class="w3layouts-box-list">
         <li>
-            <a href="{% url 'filter_movies_by_rating' 5 %}" class="{% if selected_rating == 5 %}active{% endif %}">
+            <a href="{% url 'filter_by_star' 5 %}">
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
@@ -79,7 +82,8 @@
             </a>
         </li>
         <li>
-            <a href="{% url 'filter_movies_by_rating' 4 %}" class="{% if selected_rating == 4 %}active{% endif %}"><span class="fa fa-star"></span>
+            <a href="{% url 'filter_by_star' 4 %}">
+                <span class="fa fa-star"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
@@ -88,7 +92,8 @@
             </a>
         </li>
         <li>
-            <a href="{% url 'filter_movies_by_rating' 3 %}" class="{% if selected_rating == 3 %}active{% endif %}"><span class="fa fa-star"></span>
+            <a href="{% url 'filter_by_star' 3 %}">
+                <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
@@ -97,7 +102,8 @@
             </a>
         </li>
         <li>
-            <a href="{% url 'filter_movies_by_rating' 2 %}" class="{% if selected_rating == 2 %}active{% endif %}"><span class="fa fa-star"></span>
+            <a href="{% url 'filter_by_star' 2 %}">
+                <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
@@ -106,7 +112,7 @@
             </a>
         </li>
         <li>
-            <a href="{% url 'filter_movies_by_rating' 1 %}" class="{% if selected_rating == 1 %}active{% endif %}">
+            <a href="{% url 'filter_by_star' 1 %}">
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
@@ -117,4 +123,4 @@
         </li>
     </ul>
 </div>
-{% get_last_movies count=5 %}
+{% get_last_movies count=3 %}
